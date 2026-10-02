@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>GameScope | ゲーム情報・レビュー比較</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--ink:#182033;--sub:#68738a;--line:#e1e6ef;--accent:#5b4bdb;--accent2:#7c6df0;--good:#138a68;--warn:#b67b00;--shadow:0 14px 45px rgba(27,39,67,.08);--r:20px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Noto Sans JP",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input{font:inherit}button{cursor:pointer}.wrap{max-width:1240px;margin:auto;padding:0 20px}
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+nav{height:68px;display:flex;align-items:center;gap:18px}.brand{font-size:24px;font-weight:950;letter-spacing:-1px}.brand span{color:var(--accent)}.navnote{font-size:12px;color:var(--sub)}.status{margin-left:auto;font-size:11px;color:var(--good);font-weight:800}
+main{padding:42px 0 80px}.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--accent);font-weight:900}h1{font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-3px;margin:8px 0 14px}.lead{max-width:820px;color:var(--sub);line-height:1.8}
+.search{margin-top:26px;position:relative;display:flex;gap:10px}.search input{flex:1;border:1px solid #cfd6e4;border-radius:16px;padding:17px 18px;background:#fff;box-shadow:0 5px 18px rgba(30,42,70,.04);outline:none}.search input:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(91,75,219,.1)}.search button{border:0;border-radius:16px;background:var(--accent);color:#fff;padding:0 24px;font-weight:900}.suggestions{display:none;position:absolute;left:0;right:122px;top:62px;background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);overflow:hidden;z-index:40}.suggestion{padding:12px 15px;border-bottom:1px solid #eef1f6}.suggestion:last-child{border-bottom:0}.suggestion:hover{background:#f7f6ff}.suggestion b{display:block}.suggestion span{font-size:11px;color:var(--sub)}.score{float:right;color:var(--accent);font-size:10px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;color:#566177;font-size:12px}.chip.on{background:#efedff;border-color:#cfc8ff;color:#4e42c1;font-weight:850}
+.grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:22px}.headrow{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.tag{display:inline-flex;background:#efedff;color:#5044c3;border-radius:999px;padding:6px 9px;font-size:10px;font-weight:900}.title{font-size:31px;line-height:1.15;margin:10px 0 3px}.jp{font-size:14px;color:var(--sub);font-weight:650}.muted{color:var(--sub);font-size:12px}
+.heroart{height:190px;border-radius:16px;margin:18px 0;background:linear-gradient(145deg,#eef0f8,#dfe4f0);display:flex;align-items:center;justify-content:center;overflow:hidden}.heroart pre{font:700 18px/1.05 ui-monospace,SFMono-Regular,Menlo,monospace;text-align:center;color:#20263a;white-space:pre}
+.desc{line-height:1.75;color:#4e5a71;font-size:14px}.meta{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:16px}.meta div{background:#fafbfe;border:1px solid var(--line);border-radius:13px;padding:11px}.meta small{display:block;color:var(--sub);font-size:10px;margin-bottom:4px}.meta b{font-size:12px}
+h2{font-size:24px;margin:0 0 15px}.section{margin-top:42px}.reviewgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.review{background:#fafbfe;border:1px solid var(--line);border-radius:14px;padding:13px}.reviewtop{display:flex;justify-content:space-between}.source{font-size:13px;font-weight:850}.stars{color:#c58b00;font-weight:900}.bar{height:6px;background:#e5e8ee;border-radius:8px;margin:10px 0;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--good))}.count{font-size:10px;color:var(--sub)}
+.sourcegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.sourcecard{border:1px solid var(--line);border-radius:14px;padding:13px;background:#fff}.sourcecard b{display:block;margin-bottom:5px}.sourcecard a{font-size:11px;color:var(--accent);text-decoration:none}.sourcecard small{display:block;color:var(--sub);line-height:1.5}
+.results{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.result{border:1px solid var(--line);border-radius:16px;background:#fff;padding:15px;transition:.15s}.result:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.result h3{margin:0 0 4px;font-size:16px}.result .jp{font-size:11px}.result .mini{font-size:10px;color:var(--sub);margin-top:10px}.open{margin-top:12px;width:100%;border:1px solid #d8d3ff;background:#f7f6ff;color:#4f43c0;border-radius:10px;padding:8px;font-size:11px;font-weight:850}
+footer{border-top:1px solid var(--line);padding:28px 0 50px;color:var(--sub);font-size:11px;line-height:1.7}
+@media(max-width:850px){.grid{grid-template-columns:1fr}.results{grid-template-columns:repeat(2,1fr)}.sourcegrid{grid-template-columns:1fr 1fr}.status{display:none}}
+@media(max-width:560px){.navnote{display:none}.search{flex-direction:column}.search button{height:50px}.suggestions{right:0;top:61px}.reviewgrid,.results,.sourcegrid{grid-template-columns:1fr}.meta{grid-template-columns:1fr 1fr}h1{letter-spacing:-2px}}
+</style>
+</head>
+<body>
+<header><nav class="wrap"><div class="brand">Game<span>Scope</span></div><div class="navnote">Game Information & Review Comparison</div><div class="status" id="status">LOCAL INDEX</div></nav></header>
+<main class="wrap">
+<section>
+<div class="eyebrow">SEARCH / COMPARE / DISCOVER</div>
+<h1>ゲームを、横断して調べる。</h1>
+<p class="lead">日本語・英語のどちらでも検索。入力ミスや表記ゆれにも対応し、候補を予測表示します。検索結果からSteam、PlayStation Store、Nintendo Store、Microsoft Store、Game8、ファミ通の公式ページへ直接移動できます。</p>
+<div class="search"><input id="q" autocomplete="off" placeholder="ゲーム名を入力：例）モンハン / Monster Hunter / モンスターハンター"><button id="searchBtn">検索</button><div id="suggestions" class="suggestions"></div></div>
+<div class="tools"><button class="chip on" data-filter="all">すべて</button><button class="chip" data-filter="action">ACTION</button><button class="chip" data-filter="rpg">RPG</button><button class="chip" data-filter="horror">HORROR</button><button class="chip" data-filter="switch">Nintendo</button><button class="chip" data-filter="playstation">PlayStation</button><button class="chip" data-filter="pc">PC</button></div>
+</section>
+
+<section class="grid" id="detailGrid">
+<div class="card" id="detail"></div>
+<div class="card">
+<h2>検索結果</h2><div id="results" class="results"></div>
+</div>
+</section>
+
+<section class="section">
+<h2>レビュー・評価の横断表示</h2>
+<div class="reviewgrid" id="reviews"></div>
+</section>
+
+<section class="section">
+<h2>外部ソース</h2>
+<div class="sourcegrid" id="sources"></div>
+</section>
+
+<section class="section">
+<h2>最近のおすすめ</h2>
+<div class="results" id="recent"></div>
+</section>
+</main>
+<footer><div class="wrap">GameScopeは各ストア・情報サイトのデータを無断転載するのではなく、公開情報・公式ページへのリンク・許諾されたAPI等を利用して統合表示する設計です。価格・評価・販売状況は変動します。<br>本番運用では /api/search をVercel等へ配置し、サーバー側で各データソースを更新してください。</div></footer>
+<script>
+const LOCAL = [
+["Monster Hunter Wilds","モンスターハンター ワイルズ","CAPCOM","カプコン",2025,"Japan","PC / PS5 / Xbox Series X|S","ACTION / HUNTING","¥9,990","¥6,800"],
+["Monster Hunter 4","モンスターハンター4","CAPCOM","カプコン",2013,"Japan","Nintendo 3DS","ACTION / HUNTING","¥6,280","¥2,900"],
+["Resident Evil 4","バイオハザード RE:4","CAPCOM","カプコン",2023,"Japan","PC / PS4 / PS5 / Xbox Series X|S","ACTION / HORROR","¥7,990","¥4,900"],
+["Dragon Quest XI S","ドラゴンクエストXI 過ぎ去りし時を求めて S","SQUARE ENIX","スクウェア・エニックス",2019,"Japan","Nintendo Switch / PC / PS4 / Xbox One","RPG","¥5,478","¥3,700"],
+["The Legend of Zelda: Tears of the Kingdom","ゼルダの伝説 ティアーズ オブ ザ キングダム","Nintendo","任天堂",2023,"Japan","Nintendo Switch","ACTION / ADVENTURE","¥7,900","¥5,500"],
+["The Legend of Zelda: Breath of the Wild","ゼルダの伝説 ブレス オブ ザ ワイルド","Nintendo","任天堂",2017,"Japan","Nintendo Switch / Wii U","ACTION / ADVENTURE","¥7,678","¥4,200"],
+["Super Mario Odyssey","スーパーマリオ オデッセイ","Nintendo","任天堂",2017,"Japan","Nintendo Switch","ACTION / PLATFORM","¥6,578","¥4,000"],
+["Pokémon Legends: Z-A","Pokémon LEGENDS Z-A","Nintendo / Game Freak","任天堂 / ゲームフリーク",2025,"Japan","Nintendo Switch / Switch 2","RPG / ACTION","¥7,128","¥5,500"],
+["Final Fantasy VII Rebirth","FINAL FANTASY VII REBIRTH","Square Enix","スクウェア・エニックス",2024,"Japan","PS5 / PC","RPG / ACTION","¥9,878","¥5,900"],
+["Final Fantasy XVI","FINAL FANTASY XVI","Square Enix","スクウェア・エニックス",2023,"Japan","PS5 / PC","ACTION RPG","¥9,900","¥4,500"],
+["Elden Ring","ELDEN RING","FromSoftware","フロム・ソフトウェア",2022,"Japan","PC / PS4 / PS5 / Xbox One / Xbox Series","ACTION RPG","¥9,240","¥5,200"],
+["Sekiro: Shadows Die Twice","SEKIRO: SHADOWS DIE TWICE","FromSoftware","フロム・ソフトウェア",2019,"Japan","PC / PS4 / Xbox One","ACTION","¥8,360","¥4,000"],
+["Persona 5 Royal","Persona 5 Royal","ATLUS","アトラス",2022,"Japan","PC / PS4 / PS5 / Xbox / Switch","RPG","¥7,678","¥4,200"],
+["Like a Dragon: Infinite Wealth","龍が如く8","SEGA","セガ",2024,"Japan","PC / PS4 / PS5 / Xbox","RPG","¥9,680","¥4,800"],
+["Resident Evil Village","バイオハザード ヴィレッジ","CAPCOM","カプコン",2021,"Japan","PC / PS4 / PS5 / Xbox","HORROR / ACTION","¥7,990","¥3,500"],
+["Cyberpunk 2077","サイバーパンク2077","CD PROJEKT RED","CD PROJEKT RED",2020,"Poland","PC / PS4 / PS5 / Xbox","RPG / ACTION","¥7,370","¥3,800"],
+["Baldur's Gate 3","Baldur's Gate 3","Larian Studios","Larian Studios",2023,"Belgium","PC / PS5 / Xbox Series","RPG","¥8,699","¥5,500"],
+["Minecraft","Minecraft","Mojang Studios","Mojang Studios",2011,"Sweden","PC / PS / Xbox / Switch / Mobile","SANDBOX","¥3,960","¥2,500"],
+["Fortnite","Fortnite","Epic Games","Epic Games",2017,"USA","PC / PS / Xbox / Switch / Mobile","ACTION / BATTLE ROYALE","Free","—"],
+["The Blood of Dawnwalker","The Blood of Dawnwalker","Rebel Wolves","レベル・ウルブズ",2026,"Poland","PC / PS5 / Xbox Series","ACTION RPG","TBA","—"],
+["Onimusha: Way of the Sword","Onimusha: Way of the Sword","CAPCOM","カプコン",2026,"Japan","PC / PS5 / Xbox Series / Switch 2","ACTION","TBA","—"],
+["Control Resonant","Control Resonant","Remedy Entertainment","レメディー・エンターテインメント",2026,"Finland","PC / PS5 / Xbox Series","ACTION / RPG","TBA","—"]
+];
+
+const alias = {
+"モンハン":["Monster Hunter Wilds","Monster Hunter 4","モンスターハンター ワイルズ","モンスターハンター4"],
+"monsterhunter":["Monster Hunter Wilds","Monster Hunter 4"],
+"バイオ":["Resident Evil 4","Resident Evil Village","バイオハザード RE:4","バイオハザード ヴィレッジ"],
+"ゼルダ":["The Legend of Zelda: Tears of the Kingdom","The Legend of Zelda: Breath of the Wild"],
+"ドラクエ":["Dragon Quest XI S","ドラゴンクエストXI 過ぎ去りし時を求めて S"],
+"ff7":["Final Fantasy VII Rebirth","FINAL FANTASY VII REBIRTH"],
+"龍が如く":["Like a Dragon: Infinite Wealth","龍が如く8"]
+};
+let filter="all", current=LOCAL[0];
+
+const norm=s=>(s||"").toLowerCase().normalize("NFKC").replace(/[\s\-_・:：'’"“”.,!?！？]/g,"");
+function lev(a,b){a=norm(a);b=norm(b);if(a===b)return 0;if(!a.length||!b.length)return 99;let d=Array.from({length:a.length+1},()=>Array(b.length+1).fill(0));for(let i=0;i<=a.length;i++)d[i][0]=i;for(let j=0;j<=b.length;j++)d[0][j]=j;for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[a.length][b.length]}
+function score(q,g){q=norm(q);let vals=[g[0],g[1],g[2],g[3]];let best=Math.min(...vals.map(x=>lev(q,x)));if(vals.some(x=>norm(x).includes(q)))best=Math.min(best,0);return Math.max(0,100-Math.round(best/Math.max(q.length,1)*100))}
+function passFilter(g){let p=g[6].toLowerCase(),t=g[7].toLowerCase();if(filter==="all")return true;if(filter==="action")return t.includes("action");if(filter==="rpg")return t.includes("rpg");if(filter==="horror")return t.includes("horror");if(filter==="switch")return p.includes("switch")||p.includes("3ds");if(filter==="playstation")return p.includes("ps");if(filter==="pc")return p.includes("pc");return true}
+function candidates(q){let a=LOCAL.filter(passFilter).map(g=>({g,s:score(q,g)}));let nq=norm(q);if(alias[nq]){let wanted=alias[nq];a.sort((x,y)=>(wanted.includes(x.g[0])?-100:0)+(y.s-x.s)-(wanted.includes(y.g[0])?-100:0));}else a.sort((x,y)=>y.s-x.s);return a.slice(0,9)}
+function art(g){return `┌────────────────────┐\n│  ${g[0].slice(0,16).padEnd(16," ")}  │\n│                    │\n│    ▓▓▓  ▓▓▓       │\n│    ▓▓▓▓▓▓▓▓       │\n│      ▓▓▓▓         │\n│                    │\n└────────────────────┘`}
+
+function renderDetail(g){current=g;document.getElementById("detail").innerHTML=`
+<div class="headrow"><div><span class="tag">${g[7]}</span><div class="title">${g[0]}</div><div class="jp">${g[1]}</div></div><div class="muted">${g[4]}</div></div>
+<div class="heroart"><pre>${art(g)}</pre></div>
+<p class="desc">${g[0]} は ${g[7]} に分類されるタイトルです。GameScopeでは日本語・英語表記を統合し、各ストア・専門サイトへの導線と基本情報を一つの画面にまとめます。</p>
+<div class="meta">
+<div><small>Developer / Publisher</small><b>${g[2]}（${g[3]}）</b></div><div><small>Country</small><b>${g[5]}</b></div>
+<div><small>Release</small><b>${g[4]}</b></div><div><small>Platforms</small><b>${g[6]}</b></div>
+<div><small>MSRP / Price</small><b>${g[8]}</b></div><div><small>Used-market avg.</small><b>${g[9]}</b></div>
+</div>`;renderReviews(g);renderSources(g)}
+
+function renderReviews(g){
+const base={Steam:[88,125430], "Microsoft Store":[87,1840], "PlayStation Store":[89,9420], "Nintendo Store":[91,3180], "Apple Store":[86,760], Game8:[90,620], "ファミ通":[88,430]};
+document.getElementById("reviews").innerHTML=Object.entries(base).map(([k,v])=>`<div class="review"><div class="reviewtop"><span class="source">${k}</span><span class="stars">${(v[0]/20).toFixed(1)} / 5</span></div><div class="bar"><i style="width:${v[0]}%"></i></div><div class="count">参考評価 ${v[0]} / 100　・　${v[1].toLocaleString()} 件規模の表示枠</div></div>`).join("");
+}
+function links(g){
+let q=encodeURIComponent(g[0]);
+return [
+["Steam",`https://store.steampowered.com/search/?term=${q}`,"Steamで検索"],
+["PlayStation Store",`https://store.playstation.com/ja-jp/search/${q}`,"PS Storeで検索"],
+["Nintendo Store",`https://www.nintendo.com/jp/search/?q=${q}`,"Nintendo公式で検索"],
+["Microsoft Store",`https://www.microsoft.com/ja-jp/search?q=${q}`,"Microsoft Storeで検索"],
+["Game8",`https://game8.jp/search?q=${q}`,"Game8で検索"],
+["ファミ通",`https://www.famitsu.com/search?q=${q}`,"ファミ通で検索"]
+];}
+function renderSources(g){document.getElementById("sources").innerHTML=links(g).map(x=>`<div class="sourcecard"><b>${x[0]}</b><small>タイトルの公式検索ページへ移動します。</small><a href="${x[1]}" target="_blank" rel="noopener">${x[2]} ↗</a></div>`).join("")}
+function renderResults(q=""){let arr=q?candidates(q):LOCAL.filter(passFilter).slice(0,9).map(g=>({g,s:100}));document.getElementById("results").innerHTML=arr.map(({g,s})=>`<div class="result"><h3>${g[0]}</h3><div class="jp">${g[1]}</div><div class="mini">${g[7]} · ${g[6]}<br>${g[2]}（${g[3]}）</div><button class="open" data-name="${g[0]}">このタイトルを表示</button></div>`).join("")||"<div class='muted'>候補がありません。</div>";document.querySelectorAll(".open").forEach(b=>b.onclick=()=>renderDetail(LOCAL.find(g=>g[0]===b.dataset.name)))}
+function renderRecent(){document.getElementById("recent").innerHTML=LOCAL.filter(g=>g[4]>=2025).map(g=>`<div class="result"><h3>${g[0]}</h3><div class="jp">${g[1]}</div><div class="mini">${g[4]} · ${g[7]} · ${g[6]}</div><button class="open" data-name="${g[0]}">詳細を見る</button></div>`).join("")}
+function doSearch(){let q=document.getElementById("q").value.trim();document.getElementById("suggestions").style.display="none";if(!q){renderResults("");return}renderResults(q);let top=candidates(q)[0];if(top&&top.s>=55)renderDetail(top.g)}
+document.getElementById("q").addEventListener("input",e=>{let q=e.target.value.trim();let box=document.getElementById("suggestions");if(!q){box.style.display="none";return}let a=candidates(q);box.innerHTML=a.map(({g,s})=>`<div class="suggestion" data-name="${g[0]}"><span class="score">${s}%</span><b>${g[0]}</b><span>${g[1]} · ${g[7]}</span></div>`).join("");box.style.display="block";box.querySelectorAll(".suggestion").forEach(el=>el.onclick=()=>{document.getElementById("q").value=el.dataset.name;box.style.display="none";doSearch()})});
+document.getElementById("q").addEventListener("keydown",e=>{if(e.key==="Enter")doSearch()});document.getElementById("searchBtn").onclick=doSearch;
+document.addEventListener("click",e=>{if(!e.target.closest(".search"))document.getElementById("suggestions").style.display="none"});
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));c.classList.add("on");filter=c.dataset.filter;renderResults(document.getElementById("q").value.trim())});
+renderDetail(LOCAL[0]);renderResults("");renderRecent();
+</script>
+</body>
+</html>

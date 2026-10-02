@@ -1,0 +1,130 @@
+[
+  {
+    "name_en": "Monster Hunter Wilds",
+    "name_ja": "モンスターハンター ワイルズ",
+    "developer_en": "CAPCOM",
+    "developer_ja": "カプコン",
+    "year": 2025,
+    "platforms": "PC / PS5 / Xbox Series X|S"
+  },
+  {
+    "name_en": "Monster Hunter 4",
+    "name_ja": "モンスターハンター4",
+    "developer_en": "CAPCOM",
+    "developer_ja": "カプコン",
+    "year": 2013,
+    "platforms": "Nintendo 3DS"
+  },
+  {
+    "name_en": "Resident Evil 4",
+    "name_ja": "バイオハザード RE:4",
+    "developer_en": "CAPCOM",
+    "developer_ja": "カプコン",
+    "year": 2023,
+    "platforms": "PC / PS4 / PS5 / Xbox Series X|S"
+  },
+  {
+    "name_en": "Dragon Quest XI S",
+    "name_ja": "ドラゴンクエストXI 過ぎ去りし時を求めて S",
+    "developer_en": "SQUARE ENIX",
+    "developer_ja": "スクウェア・エニックス",
+    "year": 2019,
+    "platforms": "Switch / PC / PS4 / Xbox One"
+  },
+  {
+    "name_en": "The Legend of Zelda: Tears of the Kingdom",
+    "name_ja": "ゼルダの伝説 ティアーズ オブ ザ キングダム",
+    "developer_en": "Nintendo",
+    "developer_ja": "任天堂",
+    "year": 2023,
+    "platforms": "Nintendo Switch"
+  },
+  {
+    "name_en": "Elden Ring",
+    "name_ja": "ELDEN RING",
+    "developer_en": "FromSoftware",
+    "developer_ja": "フロム・ソフトウェア",
+    "year": 2022,
+    "platforms": "PC / PS4 / PS5 / Xbox"
+  },
+  {
+    "name_en": "Final Fantasy VII Rebirth",
+    "name_ja": "FINAL FANTASY VII REBIRTH",
+    "developer_en": "Square Enix",
+    "developer_ja": "スクウェア・エニックス",
+    "year": 2024,
+    "platforms": "PS5 / PC"
+  },
+  {
+    "name_en": "Persona 5 Royal",
+    "name_ja": "ペルソナ5 ザ・ロイヤル",
+    "developer_en": "ATLUS",
+    "developer_ja": "アトラス",
+    "year": 2022,
+    "platforms": "PC / PS4 / PS5 / Xbox / Switch"
+  },
+  {
+    "name_en": "Minecraft",
+    "name_ja": "Minecraft",
+    "developer_en": "Mojang Studios",
+    "developer_ja": "Mojang Studios",
+    "year": 2011,
+    "platforms": "PC / PS / Xbox / Switch / Mobile"
+  },
+  {
+    "name_en": "Fortnite",
+    "name_ja": "フォートナイト",
+    "developer_en": "Epic Games",
+    "developer_ja": "Epic Games",
+    "year": 2017,
+    "platforms": "PC / PS / Xbox / Switch / Mobile"
+  },
+  {
+    "name_en": "Baldur's Gate 3",
+    "name_ja": "Baldur's Gate 3",
+    "developer_en": "Larian Studios",
+    "developer_ja": "Larian Studios",
+    "year": 2023,
+    "platforms": "PC / PS5 / Xbox Series"
+  },
+  {
+    "name_en": "Cyberpunk 2077",
+    "name_ja": "サイバーパンク2077",
+    "developer_en": "CD PROJEKT RED",
+    "developer_ja": "CD PROJEKT RED",
+    "year": 2020,
+    "platforms": "PC / PS4 / PS5 / Xbox"
+  },
+  {
+    "name_en": "Like a Dragon: Infinite Wealth",
+    "name_ja": "龍が如く8",
+    "developer_en": "SEGA",
+    "developer_ja": "セガ",
+    "year": 2024,
+    "platforms": "PC / PS4 / PS5 / Xbox"
+  },
+  {
+    "name_en": "The Blood of Dawnwalker",
+    "name_ja": "The Blood of Dawnwalker",
+    "developer_en": "Rebel Wolves",
+    "developer_ja": "レベル・ウルブズ",
+    "year": 2026,
+    "platforms": "PC / PS5 / Xbox Series"
+  },
+  {
+    "name_en": "Onimusha: Way of the Sword",
+    "name_ja": "鬼武者 Way of the Sword",
+    "developer_en": "CAPCOM",
+    "developer_ja": "カプコン",
+    "year": 2026,
+    "platforms": "PC / PS5 / Xbox Series / Switch 2"
+  },
+  {
+    "name_en": "Control Resonant",
+    "name_ja": "Control Resonant",
+    "developer_en": "Remedy Entertainment",
+    "developer_ja": "レメディー・エンターテインメント",
+    "year": 2026,
+    "platforms": "PC / PS5 / Xbox Series"
+  }
+]
