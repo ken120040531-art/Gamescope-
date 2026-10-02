@@ -1,4 +1,4 @@
-# GameScope 本格版
+# GameScope
 
 GameScopeを「静的なサンプルサイト」から「フロントエンド＋検索API」構成へ拡張した版です。
 
